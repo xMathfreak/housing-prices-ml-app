@@ -1,13 +1,15 @@
+import os
 import streamlit as st
 import pandas as pd
 import pickle
 
+MODEL_PATH = os.path.join("models", "final_model.pkl")
+
 st.title("House Pricing Predictions")
 st.write("Enter home features below to predict the price.")
 
-with open("../models/final_model.pkl", "rb") as f:
+with open(MODEL_PATH, "rb") as f:
     model = pickle.load(f)
-    print(model)
 
 OverallQual = st.slider("Overall Quality (1 - 10)", 1, 10, 5)
 GrLivArea = st.number_input("Above Ground Living Area (ft²)", 300, 6000, 1500)
