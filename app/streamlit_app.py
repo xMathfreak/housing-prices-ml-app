@@ -22,7 +22,16 @@ YearBuilt = st.number_input("Year Built", 1870, 2024, 1995)
 YearRemodAdd = st.number_input("Year Remodeled", 1950, 2024, 2005)
 LotArea = st.number_input("Lot Area (ft²)", 1000, 50000, 8000)
 
-KitchenQual = st.selectbox("Kitchen Quality", ["Excellent", "Good", "Average", "Fair"])
+KitchenQualDict = {
+    "Excellent": "Ex",
+    "Good": "Gd",
+    "Average": "Av",
+    "Fair": "Fa"
+}
+
+KitchenQual = st.selectbox("Kitchen Quality", list(KitchenQualDict.keys()))
+
+KitchenQual = KitchenQualDict[KitchenQual]
 
 input_df = pd.DataFrame({
     "OverallQual": [OverallQual],
